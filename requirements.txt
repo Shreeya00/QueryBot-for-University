@@ -1,0 +1,7 @@
+streamlit
+langchain
+ollama
+langchain
+langchain-community
+mysql-connector-python
+python-dotenv
