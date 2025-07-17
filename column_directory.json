@@ -1,0 +1,24 @@
+{
+    "student": "Student",
+    "student name": "Student.Name",
+    "student id": "Student.StudentId",
+    "student department": "Student.DeptId",
+    
+    "course": "Course",
+    "course name": "Course.CourseName",
+    "subject": "Course.CourseName",
+    "course id": "Course.CourseId",
+
+    "faculty": "Faculty",
+    "faculty name": "Faculty.Name",
+    "teacher": "Faculty.Name",
+    "professor": "Faculty.Name",
+    "faculty id": "Faculty.FacultyId",
+
+    "department": "Student.DeptId",
+    "department name": "Department.DeptName",
+    "dept": "Student.DeptId",
+    "hod": "Department.HOD",
+    "head of department": "Department.HOD"
+
+}
