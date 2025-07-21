@@ -3,7 +3,7 @@
     "student name": "Student.Name",
     "student id": "Student.StudentId",
     "student department": "Student.DeptId",
-    
+
     "course": "Course",
     "course name": "Course.CourseName",
     "subject": "Course.CourseName",
@@ -15,10 +15,14 @@
     "professor": "Faculty.Name",
     "faculty id": "Faculty.FacultyId",
 
-    "department": "Student.DeptId",
+    "department": "Department",
     "department name": "Department.DeptName",
     "dept": "Student.DeptId",
     "hod": "Department.HOD",
-    "head of department": "Department.HOD"
+    "head of department": "Department.HOD",
 
+    "specialisation": "Specialisation",
+    "specialisation id": "Student.SpecialisationId",
+    "specialisation name": "Specialisation.SpecialisationName"
 }
+
