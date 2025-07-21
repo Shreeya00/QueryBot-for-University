@@ -22,8 +22,11 @@ You are a helpful assistant. Given a user question about a university database, 
     - Student.StudentID = Enrollment.StudentId
     - Course.CourseID = Enrollment.CourseId
     - Course.FacultyId = Faculty.FacultyId
-    - Course.DeptId = Department.DeptId
-    - Faculty.DeptId = Department.DeptId
+    - Course.DeptId = Department.DepartmentID
+    - Faculty.DeptId = Department.DepartmentID
+    - Specialisation.DeptId = Department.DepartmentID
+    - (Add Student.SpecialisationID = Specialisation.SpecialisationID if it exists)
+
 
 - For library data:
     - If BorrowerType = 'student', BorrowerId = Student.StudentID
@@ -33,6 +36,11 @@ You are a helpful assistant. Given a user question about a university database, 
 - Prefer CourseName over CourseCode unless CourseCode is explicitly given.
 - Do NOT use columns like 'Grade', 'Remarks', 'CompletionStatus' unless explicitly asked.
 
+Given the following table structure:
+
+Course(CourseId, CourseName, SyllabusUrl, DepartmentId)
+Department(DepartmentId, DeptName)
+                                                                                  
 ### Examples:
 Q: What is the name of the faculty teaching Data Structures?
 A: SELECT Faculty.Name FROM Course JOIN Faculty ON Course.FacultyId = Faculty.FacultyId WHERE Course.CourseName = 'Data Structures';
@@ -49,10 +57,24 @@ A: SELECT Student.Name
    JOIN Department ON Student.DeptId = Department.DeptId
    WHERE Department.DeptName = 'Computer Science';
 
+Q: What is the syllabus link for all Computer Science courses?
+A: SELECT Course.CourseName, Course.SyllabusUrl
+   FROM Course
+   JOIN Department ON Course.DepartmentId = Department.DepartmentId
+   WHERE Department.DeptName = 'Computer Science';
+                                         
+                                         
 Now write an SQL query for the question:
 {question}
 ### Database Schema:
-[... same as yours ...]
+Student(StudentID, Name, Email, EnrollmentYear, DeptId)
+Faculty(FacultyID, Name, Email, DateOfJoining, DeptId)
+Course(CourseID, CourseName, SyllabusUrl, FacultyId, DeptId, SemesterOffered)
+Enrollment(EnrollmentID, StudentId, CourseId, Semester, EnrollmentDate)
+Department(DepartmentID, DeptName, HOD)
+Specialisation(SpecialisationID, SpecialisationName, DeptId)
+LibraryTransaction(TransactionId, BookTitle, BorrowerType, BorrowerId, IssueDate, DueDate, ReturnDate)
+
 
 User question: {question}
 SQL query:
